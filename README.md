@@ -1,0 +1,5 @@
+"# "Projet: Jeu de devinette de fichiers"" 
+"" 
+"Date et heure d'exécution de make: $(date)" 
+"" 
+"Nombre de lignes dans guessinggame.sh: $(wc -l < guessinggame.sh)" 
