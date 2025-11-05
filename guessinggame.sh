@@ -1,28 +1,29 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-guess_number() {
-    local total_files=$1
-    local guess=0
-
-    while [[ $guess -ne $total_files ]]; do
-        echo "Devinez combien de fichiers se trouvent dans le répertoire actuel :"
-        read guess
-
-        if ! [[ $guess =~ ^[0-9]+$ ]]; then
-            echo "Veuillez entrer un nombre valide."
-            continue
-        fi
-
-        if [[ $guess -lt $total_files ]]; then
-            echo "Trop bas. Essayez encore."
-        elif [[ $guess -gt $total_files ]]; then
-            echo "Trop haut. Essayez encore."
-        else
-            echo "Félicitations ! Vous avez deviné le nombre correct de fichiers."
-        fi
-    done
+function count_files {
+    local count=$(ls -1 | wc -l)
+    echo $count
 }
 
-total_files=$(find . -maxdepth 1 -type f | wc -l)
+file_count=$(count_files)
 
-guess_number $total_files
+echo "Welcome to the Guessing Game!"
+echo "How many files are in the current directory?"
+
+while true; do
+    read guess
+    
+    if ! [[ "$guess" =~ ^[0-9]+$ ]]; then
+        echo "Please enter a valid number:"
+        continue
+    fi
+    
+    if [ "$guess" -lt "$file_count" ]; then
+        echo "Your guess is too low. Try again:"
+    elif [ "$guess" -gt "$file_count" ]; then
+        echo "Your guess is too high. Try again:"
+    else
+        echo "Congratulations! You guessed the correct number of files!"
+        break
+    fi
+done

@@ -1,12 +1,9 @@
-README_FILE=README.md
-SCRIPT_FILE=guessinggame.sh
-TITLE="Projet: Jeu de devinette de fichiers"
+README.md: guessinggame.sh
+	echo "# Guessing Game Project" > README.md
+	echo "" >> README.md
+	echo "**Date and Time:** $$(date)" >> README.md
+	echo "" >> README.md
+	echo "**Number of lines in guessinggame.sh:** $$(wc -l < guessinggame.sh)" >> README.md
 
-all: $(README_FILE)
-
-$(README_FILE):
-	@echo "# $(TITLE)" > $(README_FILE)
-	@echo "" >> $(README_FILE)
-	@echo "Date et heure d'exécution de make: $$(date)" >> $(README_FILE)
-	@echo "" >> $(README_FILE)
-	@echo "Nombre de lignes dans $(SCRIPT_FILE): $$(wc -l < $(SCRIPT_FILE))" >> $(README_FILE)
+clean:
+	rm -f README.md
