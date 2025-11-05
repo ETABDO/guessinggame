@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function count_files {
-    local count=$(ls -1 | wc -l)
+    local count=$(find . -maxdepth 1 -type f | wc -l)
     echo $count
 }
 
