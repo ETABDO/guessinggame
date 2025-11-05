@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function count_files {
-    local count=$(find . -maxdepth 1 -type f | wc -l)
+    local count=$(ls -1 | wc -l)
     echo $count
 }
 
@@ -27,3 +27,4 @@ while true; do
         break
     fi
 done
+

@@ -1,9 +1,8 @@
+SHELL := /bin/bash
+
 README.md: guessinggame.sh
-	echo "# Guessing Game Project" > README.md
-	echo "" >> README.md
-	echo "**Date and Time:** $$(date)" >> README.md
-	echo "" >> README.md
-	echo "**Number of lines in guessinggame.sh:** $$(wc -l < guessinggame.sh)" >> README.md
+	@bash -c 'echo -e "# Guessing Game Project\n\n**Date and Time:** $$(date)\n\n**Number of lines in guessinggame.sh:** $$(wc -l < guessinggame.sh)"' > README.md
 
 clean:
 	rm -f README.md
+
